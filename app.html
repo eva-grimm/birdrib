@@ -73,18 +73,23 @@
                 </p>
                 <h2 class="display-6 border-bottom">Instructions</h2>
                 <p>
-                    Enter the word you believe is a palindrome in the input box, then press the 'check' button.
+                    Enter the word you believe is a palindrome in the input box, then press the 'check' button to see
+                    whether it is.
+                </p>
+                <p>
+                    This applet may be run multiple times.
                 </p>
             </div>
             <div class="col">
-                <h5 class="border-bottom border-2 mb-3">Enter A Potential Palindrome</h5>
+                <h5 class="border-bottom border-2 mb-3">Enter the Suspected Palindrome</h5>
                 <form action="#" class="row g-3">
                     <div class="col-12">
                         <input type="text" name="userString" id="userString" class="form-control"
-                            placeholder="Enter a String" aria-label="Enter a String">
+                            placeholder="Enter Your Possible Palindrome" aria-label="Enter Your Possible Palindrome">
                     </div>
                     <div class="col-12 text-end">
-                        <button id="btn-submit" class="btn btn-primary" type="button" onclick="getValues()">Check</button>
+                        <button id="btn-submit" class="btn btn-primary" type="button"
+                            onclick="getValues()">Check</button>
                     </div>
                 </form>
                 <div id="alert" role="alert" class="alert alert-danger mt-3 fade show invisible">
@@ -127,7 +132,7 @@
 
     <!-- Sweet Alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <!-- Custom JS -->
     <script src="/js/site.js"></script>
 </body>
