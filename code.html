@@ -94,13 +94,11 @@
                         
                         function displayResults(palindromeResults) {
                             if (palindromeResults.checkForPalindrome(palindromeResults.userString)) {
-                                document.getElementById('reverse').textContent = palindromeResults.reverseString(palindromeResults.userString);
-                                document.getElementById('result').textContent = "We've got a palindrome!";
+                                document.getElementById('result').innerHTML = `Your string reversed is: <strong>${palindromeResults.reverseString(palindromeResults.userString)}</strong>.<br>We've got a palindrome!`;
                                 document.getElementById('alert').classList.remove('invisible', 'alert-danger');
                                 document.getElementById('alert').classList.add('alert-success');
                             } else {
-                                document.getElementById('reverse').textContent = palindromeResults.reverseString(palindromeResults.userString);
-                                document.getElementById('result').textContent = "Doesn't look like a palindrome";
+                                document.getElementById('result').innerHTML = `Your string reversed is: <strong>${palindromeResults.reverseString(palindromeResults.userString)}</strong>.<br>Doesn't look like a palindrome...!`;
                                 document.getElementById('alert').classList.remove('invisible', 'alert-success');
                                 document.getElementById('alert').classList.add('alert-danger');
                             }
