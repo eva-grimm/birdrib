@@ -72,15 +72,102 @@
                 <h2 class="border-bottom border-2 border-dark">The Code</h2>
                 <pre class="line-numbers">
                     <code class="language-js">
+                        function getValues() {
+                            let palindromeResults = {
+                                userString: document.getElementById('userString').value.replace(/[^A-Z0-9]/gi, ""),
+                                checkForPalindrome(userString) {
+                                    userString = userString.toLowerCase();
+                                    let middle = (userString.length % 2 == 1) ? (userString.length - 3) / 2 : (userString.length / 2) - 1;
+                                    for (let i = 0; i &lt;= middle; i++) {
+                                        if (userString[i] != userString[userString.length - 1 - i]) return false;
+                                    }
+                                    return true;
+                                },
+                                reverseString(userString) {
+                                    let reversedString = '';
+                                    for (let i = userString.length - 1; i >= 0; i--) reversedString += userString[i];
+                                    return reversedString
+                                }
+                            }
+                            displayResults(palindromeResults);
+                        }
                         
+                        function displayResults(palindromeResults) {
+                            if (palindromeResults.checkForPalindrome(palindromeResults.userString)) {
+                                document.getElementById('reverse').textContent = palindromeResults.reverseString(palindromeResults.userString);
+                                document.getElementById('result').textContent = "We've got a palindrome!";
+                                document.getElementById('alert').classList.remove('invisible', 'alert-danger');
+                                document.getElementById('alert').classList.add('alert-success');
+                            } else {
+                                document.getElementById('reverse').textContent = palindromeResults.reverseString(palindromeResults.userString);
+                                document.getElementById('result').textContent = "Doesn't look like a palindrome";
+                                document.getElementById('alert').classList.remove('invisible', 'alert-success');
+                                document.getElementById('alert').classList.add('alert-danger');
+                            }
+                        }
                     </code>
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
-                <p>The code is structured in one function</p>
-                <h5>displayMessage</h5>
                 <p>
-                    Shows a SweetAlert with the value of the <code>message</code> variable.
+                    The code is structured in two functions, the first of which will create an object that includes two
+                    methods. Let's dive in.
+                </p>
+                <h5>getValues</h5>
+                <p>
+                    getValues() uses no parameters and controls the flow of the overall applet. It begins by
+                    constructing an object, palindromeResults, which will be passed on to displayResults() at the end of
+                    the function.
+                </p>
+                <h5>palindromeResults{}</h5>
+                palindromeResults has only one property, userString, which is assigned the value of the string provided
+                by the user stripped of punctuation, spaces, and other non-alphametical or non-numerical characters.
+                Said characters are removed using a regex. It additionally has two methods, checkForPalindrome() and
+                reverseString().
+                </p>
+                <h6>checkForPalindrome()</h6>
+                <p>
+                    checkForPalindrome() uses one parameter, userString, and will compare the first character of
+                    userString against the last character, the second character against the next to last, and so on
+                    until the middle is reached. The method begins by setting userString to all lowercase to eliminate
+                    case as a factor for comparison purposes. The method next uses ternary operators to determine where
+                    the middle of userString is and assign the value to a variable of the same name. If userString has
+                    an odd length, middle is set to half the length of userString minus three ((userString.length - 3) /
+                    2), which is in truth one less/greater than the true middle. This is done because there is no need
+                    to check the middle letter against itself. If userString is otherwise even, middle is set to one
+                    less than the length of userString divided by two ((userString.length / 2) - 1), which accounts for
+                    string indexes beginning with zero.
+                </p>
+                <p>
+                    checkForPalindrome() then uses a for-loop to check if userString is a palindrome. The loop
+                    establishes an index of 0 and checks if the value of userString at the index of i is equal to the
+                    the value of userString at the index of its length minus 1 and the value of i, therefore comparing
+                    the first letter of userString against the last letter. As the loop iterates, the checked letters
+                    will tick inward by one step each, and the loop will continue so long as the value of i is less than
+                    or equal to the value assigned to middle. If at any time two compared letters do not match, the
+                    method returns a value of false; otherwise, if the loop concludes without a failure, the method
+                    returns a value of true.
+                </p>
+                <h6>reverseString</h6>
+                <p>
+                    reverseString() uses one parameter, userString, and builds and returns a reverse of userString to be
+                    provided back to the user with the success/failure message of displayResults(). The method begins by
+                    declaring a blank string, reversedString. It then uses a for-loop that uses an index of userString's
+                    length less one, iterates negatively, and will continue so long as the index is greater than or
+                    equal to zero. While the loop is running, the method will set reversedString to the value of itself
+                    plus the value of userString at the index. Once the loop is concluded, the method returns the
+                    reversedString.
+                </p>
+                <h5>displayResults()</h5>
+                <p>
+                    displayResults() uses one parameter, palindromeResults, and uses the parameter's built-in property
+                    (userString) and method (checkForPalindrome()) to confirm whether the user provided a valid
+                    palindrome. If checkForPalindrome returns as true, the function uses DOM manipulation to show a
+                    green colored alert with the results, which are set to the reverse of userString (obtained via the
+                    reversString method) and the message "We've got a palindrome!" If checkForPalindrome otherwise
+                    returns as false, the function uses DOM manipulation to instead show a red colored alert with the
+                    reverse of userString and the message "Doesn't look like a palindrome." The alert adjusts if the
+                    applet is subsequently run again.
                 </p>
             </div>
         </div>
