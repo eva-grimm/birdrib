@@ -24,7 +24,7 @@ function displayResults(palindromeResults) {
         document.getElementById('alert').classList.remove('invisible', 'alert-danger');
         document.getElementById('alert').classList.add('alert-success');
     } else {
-        document.getElementById('result').innerHTML = `Your string reversed is: <strong>${palindromeResults.reverseString(palindromeResults.userString)}</strong>.<br>Doesn't look like a palindrome...!`;
+        document.getElementById('result').innerHTML = `Your string reversed is: <strong>${palindromeResults.reverseString(palindromeResults.userString)}</strong>.<br>Doesn't look like a palindrome...`;
         document.getElementById('alert').classList.remove('invisible', 'alert-success');
         document.getElementById('alert').classList.add('alert-danger');
     }
